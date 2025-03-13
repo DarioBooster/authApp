@@ -1,0 +1,36 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+<link rel="stylesheet" type="text/css" href="{% static 'bootstrap.min.css' %}">
+</head>
+<body>
+    <div class="container">
+      <div class="">
+        <h1>Connexion</h1>
+        {% if messages %}
+        <div>
+          {% for message in messages %}
+          <p class="error"> {{message}} </p>
+          {% endfor %}
+        {% endif %}
+        </div>
+        <form class="form-group" action="{% url 'connexion' %}" method="POST">
+          {% csrf_token %}
+          <label for="">Username *</label>
+          <input type="text" placeholder="Enter your Username" id="" name="username" class="" required="">
+          <label for="password" class="">Password *</label>
+          <input type="text" placeholder="Enter your Password" id="password" name="password"  required="">
+          <input type="checkbox" id="checkbox" name="remember" value="On" class="">
+          <label for="checkbox" class="" style="">Remember me</label>
+          <button type="submit">Se connecter</button>
+    </form>
+    <p class="link"> Vous n'êtes pas encore inscrit ? <a href="{% url 'inscription' %}">S'inscrire</a>  </p>
+      </div>
+    </div>    
+</body>
+</html>
